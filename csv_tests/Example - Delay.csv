@@ -1,0 +1,12 @@
+Test_Name,Example - Delay,,,,
+Description,Usage example for DELAY action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Delete Global scope test records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"
+2,Delay for 3s,TRUE,10,DELAY,3
+3,Insert 10 Test scope test records,TRUE,10,INSERT RECORDS,"{""sobject"":""TestValidation__c"",""Name__c"":""validate""}"
+4,Assert Global scope test record count,TRUE,10,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""Name__c"":""validate"",""assertValue"":""10""}"
+5,Delete Global scope test records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"
+6,Delay for 45s,TRUE,10,DELAY,45
+7,Assert Global scope record count is 0,TRUE,10,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""Name__c"":""validate"",""assertValue"":""0""}"

@@ -1,0 +1,17 @@
+Test_Name,Example - Leads Conversion,,,,
+Description,"Assert leads conversion after custom code change. ",,,,
+Tags,Leads,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Setup - Clean up 'Demo' records,TRUE,1,DELETE RECORDS ALL,"{""sobject"":""Account"",""Name"":""Testing House""}"
+2,Setup - Clean up 'Demo' records,TRUE,1,DELETE RECORDS ALL,"{""sobject"":""Contact"",""LastName"":""Demo""}"
+3,Setup - Clean up 'Demo' records,TRUE,1,DELETE RECORDS ALL,"{""sobject"":""Lead"",""LastName"":""Demo""}"
+4,Insert lead 'Demo',TRUE,1,INSERT RECORDS,"{""sobject"":""Lead"",""LastName"":""Demo"",""Company"":""Testing House""}"
+5,Convert lead using apex,TRUE,1,EXECUTE APEX,"Lead demoLead = [Select id, LastName from Lead where LastName = 'Demo']; Database.LeadConvert lc = new Database.LeadConvert(); lc.setLeadId(demoLead.id); LeadStatus convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted=true LIMIT 1]; lc.setConvertedStatus(convertStatus.MasterLabel); Database.LeadConvertResult lcr = Database.convertLead(lc);"
+6,Assert lead conversion status,TRUE,1,ASSERT FIELD VALUE,"{""sobject"":""Lead"",""*ASSERT*IsConverted"":""true""}"
+7,Assert lead conversion status,TRUE,1,ASSERT FIELD VALUE,"{""sobject"":""Lead"",""*ASSERT*Status"":""Qualified""}"
+8,Assert lead conversion status,TRUE,1,ASSERT FIELD VALUE,"{""sobject"":""Lead"",""*ASSERT*Company"":""Testing House""}"
+9,Assert lead conversion status,TRUE,1,ASSERT FIELD VALUE,"{""sobject"":""Lead"",""*ASSERT*Name"":""Demo""}"
+10,Assert Account record count,TRUE,1,ASSERT RECORD COUNT ALL,"{""sobject"":""Account"",""Name"":""Testing House"",""ASSERTCOUNT"":""1""}"
+11,Assert Contact record count,TRUE,1,ASSERT RECORD COUNT ALL,"{""sobject"":""Contact"",""LastName"":""Demo"",""ASSERTCOUNT"":""1""}"
+12,Assert Lead record count,TRUE,1,ASSERT RECORD COUNT ALL,"{""sobject"":""Lead"",""LastName"":""Demo"",""ASSERTCOUNT"":""1""}"

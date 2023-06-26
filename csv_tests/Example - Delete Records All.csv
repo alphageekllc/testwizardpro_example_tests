@@ -1,0 +1,13 @@
+Test_Name,Example - Delete All Records,,,,
+Description,Usege example for DELETE RECORDS ALL action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Insert 10 Global scope test records,TRUE,10,INSERT RECORDS ALL,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+2,Insert 10 Test scope test records,TRUE,10,INSERT RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+3,Assert Test scope test record count,TRUE,10,ASSERT RECORD COUNT,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""10""}"
+4,Delete Test scope records,TRUE,10,DELETE RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+5,Assert Test scope record count,TRUE,10,ASSERT RECORD COUNT,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""0""}"
+6,Assert Global scope record count,TRUE,10,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""10""}"
+7,Delete all Global scope records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+8,Assert Global scope record count,TRUE,10,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""0""}"

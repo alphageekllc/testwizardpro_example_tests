@@ -1,0 +1,9 @@
+Test_Name,Example - Execute Callout,,,,
+Description,Usage example for EXECUTE CALLOUT action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,"Execute callout, store json response in persistent variable",TRUE,1,EXECUTE CALLOUT,"{""Url"":""https://api.spacexdata.com/v5/launches/latest"",""StatusCode"":""200"",""Method"":""GET"",""StoreDataPersistent"":""var1"",""Headers"":{""Content-Type"":""application/json""}}"
+2,Assert persistent test data,TRUE,1,ASSERT TEST DATA,"{""TestDataPersistentVar"":""var1"",""Field"":""links:patch:large"",""ExpectedValue"":""https://imgur.com/573IfGk.png""}"
+3,"Execute callout, store json response in data variable",TRUE,1,EXECUTE CALLOUT,"{""Url"":""https://api.coingecko.com/api/v3/exchange_rates"",""StatusCode"":""200"",""Method"":""GET"",""StoreData"":""var2"",""Headers"":{""Content-Type"":""application/json""}}"
+4,Assert test data,TRUE,1,ASSERT TEST DATA,"{""TestDataVar"":""var2"",""Field"":""rates:eth:value"",""ExpectedValue"":""lt13.467""}"

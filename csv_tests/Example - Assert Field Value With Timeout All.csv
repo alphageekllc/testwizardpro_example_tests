@@ -1,0 +1,15 @@
+Test_Name,Example - Assert Field Value With Timeout All,,,,
+Description,Usage example for ASSERT FIELD VALUE WITH TIMEOUT All action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Delete all test records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"
+2,Insert 10 Global scope test records,TRUE,10,INSERT RECORDS ALL,"{""sobject"":""TestValidation__c"",""Name"":""Insert Records All""}"
+3,Insert 10 Test scope test records,TRUE,10,INSERT RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Insert Records""}"
+4,Update Test scope test records,TRUE,10,UPDATE RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Insert Records"", ""*UPDATE*Name"":""Insert Records 2""}"
+5,Assert Test scope test records Name field,TRUE,10,ASSERT FIELD VALUE,"{""sobject"":""TestValidation__c"",""*ASSERT*Name"":""Insert Records 2""}"
+6,Assert Test scope record count,TRUE,10,ASSERT RECORD COUNT,"{""sobject"":""TestValidation__c"",""Name"":""Insert Records 2"",""assertValue"":""10""}"
+7,Delete Test scope test records,TRUE,10,DELETE RECORDS,"{""sobject"":""TestValidation__c""}"
+8,Assert Global scope test records count,TRUE,10,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""assertValue"":""10""}"
+9,Assert Global scope Name field with timeout,TRUE,10,ASSERT FIELD VALUE WITH TIMEOUT ALL,"{""sobject"":""TestValidation__c"",""TIMEOUT"":""10"",""*ASSERT*Name"":""Insert Records All""}"
+10,Cleanup - delete all test records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"

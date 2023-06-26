@@ -1,0 +1,9 @@
+Test_Name,Example - Insert Records,,,,
+Description,Usage example for INSERT RECORDS action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Insert 10 test records,TRUE,10,INSERT RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+2,Assert record count is 10,TRUE,10,ASSERT RECORD COUNT,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""10""}"
+3,Delete test records,TRUE,10,DELETE RECORDS,"{""sobject"":""TestValidation__c"",""Name"":""Test Account""}"
+4,Assert record count is 0,TRUE,10,ASSERT RECORD COUNT,"{""sobject"":""TestValidation__c"",""Name"":""Test Account"",""assertValue"":""0""}"

@@ -1,0 +1,6 @@
+Test_Name,Example - Compare Data Snapshots,,,,
+Description,Example use for COMPARE DATA SNAPSHOTS action,,,,
+Tags,,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,"Compare data snapshots ",TRUE,10,COMPARE DATA SNAPSHOTS,"{""snapshot1"":""snap1"",""snapshot2"":""snap2""}"

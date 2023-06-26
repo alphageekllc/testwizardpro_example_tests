@@ -1,0 +1,15 @@
+Test_Name,Example - Create Data Snapshot 1,,,,
+Description,Example use for CREATE DATA SNAPSHOT action,,,,
+Tags,,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Delete all contact records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""contact""}"
+2,Delete all case records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""case""}"
+3,Delete all entitlements records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""entitlement""}"
+4,Delete all accounts records,TRUE,10,DELETE RECORDS ALL,"{""sobject"":""account""}"
+5,Insert account records,TRUE,10,INSERT RECORDS,"{""sobject"":""account"",""Name"":""testing account""}"
+6,Insert case records,TRUE,10,INSERT RECORDS,"{""sobject"":""case"",""type"":""test"",""Comments"":""In progress"",""AccountId"":""Lookup(Account)"",""Origin"":""Web"",""Reason"":""Testing..."",""IsEscalated"":""true"",""Priority"":""Testing..."",""Status"":""Testing..."",""Subject"":""Testing..."",""SuppliedCompany"":""Testing..."",""SuppliedEmail"":""*RANDOM.EMAIL*"",""SuppliedName"":""Testing..."",""SuppliedPhone"":""*RANDOM.PHONENUMBER*""}"
+7,Insert contact records,TRUE,10,INSERT RECORDS,"{""sobject"":""contact"",""lastname"":""*RANDOM.LASTNAME*"",""OtherLatitude"":""*DOUBLE*3.3"", ""OtherLongitude"":""*DOUBLE*44.5""}"
+8,"Update cases Status fields ",TRUE,10,UPDATE RECORDS,"{""sobject"":""case"",""Origin"":""Web"",""*UPDATE*Status"":""Updated data 2""}"
+9,Assert cases Status fields values,TRUE,10,ASSERT FIELD VALUE,"{""sobject"":""case"",""type"":""test"",""*ASSERT*Status"":""Updated data 2""}"
+10,Create snapshot data 1 from contact test records,TRUE,10,CREATE DATA SNAPSHOT,"{""name"":""snap1"",""sobject"":""contact""}"

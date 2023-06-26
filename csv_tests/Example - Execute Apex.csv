@@ -1,0 +1,9 @@
+Test_Name,Example - Execute Apex,,,,
+Description,Usage example for EXECUTE APEX action,,,,
+Tags,EXAMPLE,,,,
+Priority,1,,,,
+Sequence,Name,Enable,Count,Step,Data
+1,Delete all test records,TRUE,1,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"
+2,Create test object using apex,TRUE,1,EXECUTE APEX,TestValidation__c tv = new TestValidation__c(); tv.Name__c='Test123'; insert tv;
+3,Assert test object count,TRUE,1,ASSERT RECORD COUNT ALL,"{""sobject"":""TestValidation__c"",""Name__c"":""Test123"",""assertValue"":""1""}"
+4,Cleanup - Delete test records,TRUE,1,DELETE RECORDS ALL,"{""sobject"":""TestValidation__c""}"
